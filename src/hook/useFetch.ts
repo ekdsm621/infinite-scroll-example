@@ -25,6 +25,7 @@ const useFetch = ():[TodoType[], boolean, () => void, () => void] => {
     const pageUp = useCallback(() => {
         if(!stop) {
             setOffset(offset + limit);
+            console.log(offset);
         }
     },[offset, limit, stop]);
 
