@@ -9,11 +9,7 @@ import useFetch from "../hook/useFetch";
 const AgGridExample = () => {
 
     const [ lastRow, setLastRow ] = useState<Element | null>(null);
-    const [ data, stop, pageUp, initData ] = useFetch();
-
-    useEffect(() => {
-        initData();
-    }, [])
+    const [ data, stop, pageUp ] = useFetch();
 
     const handleObserver = useCallback((entries: any) => {
         const target = entries[0];

@@ -1,5 +1,4 @@
 import axios, {AxiosResponse} from "axios";
-import {TodoType} from "./agGrid/TodoType";
 
 class Apis {
     static _instance: Apis;
@@ -11,7 +10,7 @@ class Apis {
         return Apis._instance;
     }
 
-    async getDataList(offset:number, limit:number):Promise<AxiosResponse<TodoType[]>> {
+    async getDataList<T>(offset:number, limit:number):Promise<AxiosResponse<T[]>> {
         return axios({
             url:'http://localhost:8000/todo/',
             method:'get',
