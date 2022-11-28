@@ -5,11 +5,14 @@ import {useCallback, useEffect, useMemo, useState} from "react";
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import useFetch from "../hook/useFetch";
+import Apis from "../Apis";
 
 const AgGridExample = () => {
+    const apis = Apis.instance;
+
+    const [ data, stop, pageUp ] = useFetch(apis.getDataList);
 
     const [ lastRow, setLastRow ] = useState<Element | null>(null);
-    const [ data, stop, pageUp ] = useFetch();
 
     const handleObserver = useCallback((entries: any) => {
         const target = entries[0];

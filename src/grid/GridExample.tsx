@@ -2,10 +2,12 @@ import {observer} from "mobx-react";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import useFetch from "../hook/useFetch";
 import {TodoType} from "../agGrid/TodoType";
+import Apis from "../Apis";
 
 const GridExample = () => {
+    const apis = Apis.instance;
 
-    const [ data, stop, pageUp ] = useFetch<TodoType>();
+    const [ data, stop, pageUp ] = useFetch<TodoType>(apis.getDataList);
 
     const ref = useRef(null);
     const [ loading, setLoading ] = useState(false);

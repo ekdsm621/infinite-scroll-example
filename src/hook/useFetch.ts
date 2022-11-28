@@ -1,8 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
-import Apis from "../Apis";
-const useFetch = <T>():[T[], boolean, () => void] => {
-
-    const apis = Apis.instance;
+import {AxiosResponse} from "axios";
+const useFetch = <T> (fetch:(offset:number, limit:number) => Promise<AxiosResponse<T[]>>):[T[], boolean, () => void] => {
 
     const [ data, setData ] = useState<T[]>([]);
     const [ stop, setStop ] = useState(false);
@@ -14,7 +12,7 @@ const useFetch = <T>():[T[], boolean, () => void] => {
     },[offset]);
 
     const fetchData = useCallback(() => {
-        apis.getDataList<T>(offset, limit).then(res => {
+        fetch(offset, limit).then(res => {
             if( res.data.length < limit ) setStop(true);
             setData([...data, ...res.data]);
         });
