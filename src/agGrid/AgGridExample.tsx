@@ -24,7 +24,7 @@ const AgGridExample = () => {
 
     useEffect(() => {
         if (lastRow) {
-            const observer = new IntersectionObserver(handleObserver, { root: document.querySelector('.ag-body-viewport') });
+            const observer = new IntersectionObserver(handleObserver, { root: null });
             if (lastRow) observer.observe(lastRow);
         }
     }, [handleObserver, lastRow]);

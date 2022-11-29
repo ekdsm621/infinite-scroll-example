@@ -5,7 +5,7 @@ import GridExample from "./grid/GridExample";
 function App() {
 
   return (
-    <GridExample />
+    <AgGridExample />
   )
 }
 

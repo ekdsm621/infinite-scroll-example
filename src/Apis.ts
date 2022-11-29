@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from "axios";
+import axios from "axios";
 
 class Apis {
     static _instance: Apis;
@@ -10,7 +10,7 @@ class Apis {
         return Apis._instance;
     }
 
-    async getDataList<T>(offset:number, limit:number):Promise<AxiosResponse<T[]>> {
+    async getDataList<T>(offset:number, limit:number):Promise<T[]> {
         return axios({
             url:'http://localhost:8000/todo/',
             method:'get',
@@ -19,7 +19,7 @@ class Apis {
                 _start: offset,
                 _limit: limit,
             }
-        })
+        }).then(res => res.data)
     }
 }
 
